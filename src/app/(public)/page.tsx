@@ -1,4 +1,5 @@
 
+
 import { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from "@/components/ui/card";
@@ -10,7 +11,7 @@ import { getJournals, Journal } from "@/services/journalService";
 export const metadata: Metadata = {
   title: 'Home | Academic Publishing & Conference Management',
   description: 'Pure Research Insights empowers researchers and businesses with expert solutions for journal submissions, conference organization, and publication consultancy.',
-  keywords: ['research publication', 'academic publication', 'journal indexing', 'Scopus', 'Web of Science', 'conference management', 'publication support services', 'call for papers'],
+  keywords: ['research publication', 'academic publication', 'journal indexing', 'Scopus', 'Web of Science', 'conference management', 'publication support services', 'call for papers', 'Best publication in Nagpur', 'Top publication in Nagpur'],
 };
 
 

@@ -6,9 +6,9 @@ import { Target, Eye, Presentation, BookOpen, GraduationCap } from "lucide-react
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | Pure Research Insights",
   description: "Learn about Pure Research Insights' mission to advance knowledge and foster innovation by connecting the brightest minds from around the globe through conference management, publications, and PhD services.",
-  keywords: ["about us", "mission", "vision", "academic services", "conference management"],
+  keywords: ["about us", "mission", "vision", "academic services", "conference management", "Leading publication house in Nagpur", "Trusted publisher in Nagpur"],
 };
 
 async function getAboutContent() {

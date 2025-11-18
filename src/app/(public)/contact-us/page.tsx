@@ -5,9 +5,15 @@ import ContactForm from "@/components/forms/contact-form";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Get in touch with the Pure Research Insights team. Contact us via our form, email, or phone for support, questions, or partnership inquiries.",
-  keywords: ["contact", "support", "inquiry", "email", "phone number", "address"],
+  title: "Contact Us | Pure Research Insights | Nagpur",
+  description: "Get in touch with the Pure Research Insights team in Nagpur. Contact us for the best publication services, research support, and partnership inquiries.",
+  keywords: [
+    "contact", "support", "inquiry", "email", "phone number", "address",
+    "Best publication in Nagpur", "Top publication in Nagpur", "Leading publication house in Nagpur",
+    "Top-rated publication in Nagpur", "No.1 publication in Nagpur", "Award-winning publication in Nagpur",
+    "Most trusted publication in Nagpur", "Professional publication services in Nagpur", "Top publishing companies in Nagpur",
+    "Renowned publication house", "Trusted publisher in Nagpur", "Professional publishing support", "Affordable publishing solutions"
+  ],
 };
 
 
