@@ -154,12 +154,12 @@ export default function UpcomingConferencesPage() {
                                         <div className="p-4 flex flex-col md:flex-row items-center gap-4">
                                             <Image src={conference.imageSrc || 'https://placehold.co/120x120.png'} alt={conference.shortTitle} width={120} height={120} className="w-28 h-28 object-contain" data-ai-hint="logo brand"/>
                                             <div className="text-center md:text-left flex-1 space-y-2">
-                                                <h4 className="font-bold text-base hover:text-primary"><Link href={`/conference/${conference.id}`}>{conference.title}</Link></h4>
+                                                <h4 className="font-bold text-base hover:text-primary"><Link href={`/conference/${conference.shortTitle}`}>{conference.title}</Link></h4>
                                                 <p className="text-sm text-primary font-semibold flex items-center justify-center md:justify-start gap-2"><Calendar className="h-4 w-4"/>{conference.date}</p>
                                             </div>
                                             <div className="text-center md:text-right space-y-2">
                                                  <p className="text-sm font-bold flex items-center justify-center md:justify-end gap-2 text-primary hover:underline"><MapPin className="h-4 w-4" /> {conference.location}</p>
-                                                 <Link href={`/conference/${conference.id}`} className="text-sm text-muted-foreground hover:text-primary flex items-center justify-center md:justify-end gap-1">
+                                                 <Link href={`/conference/${conference.shortTitle}`} className="text-sm text-muted-foreground hover:text-primary flex items-center justify-center md:justify-end gap-1">
                                                     <Eye className="h-4 w-4"/> View Details
                                                  </Link>
                                             </div>
