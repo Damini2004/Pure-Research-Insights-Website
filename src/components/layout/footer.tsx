@@ -23,7 +23,7 @@ const exploreLinks = [
 const socialLinks = [
     { href: "https://www.linkedin.com/company/pure-researcher-insights/", icon: Linkedin },
     // { href: "https://www.youtube.com/@PureResearchInsights", icon: Youtube },
-    { href: "2) https://www.facebook.com/profile.php?id=61580467397343", icon: Facebook },
+    { href: "https://www.facebook.com/profile.php?id=61580467397343", icon: Facebook },
     { href: "https://www.instagram.com/pure_research_insights?igsh=ZjdqZXN5NHRtemhn", icon: Instagram },
 ]
 
