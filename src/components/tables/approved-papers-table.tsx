@@ -13,32 +13,47 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getSubmissions, type Submission } from "@/services/submissionService";
+import { getConferences, type Conference } from "@/services/conferenceService";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ApprovedPapersTable() {
   const { toast } = useToast();
   const [approvedPapers, setApprovedPapers] = React.useState<Submission[]>([]);
+  const [conferences, setConferences] = React.useState<Conference[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const fetchApprovedPapers = async () => {
+    const fetchData = async () => {
       setIsLoading(true);
       try {
-        const allSubmissions = await getSubmissions();
+        const [allSubmissions, conferenceData] = await Promise.all([
+          getSubmissions(),
+          getConferences()
+        ]);
         const doneSubmissions = allSubmissions.filter(s => s.status === 'Done');
         setApprovedPapers(doneSubmissions);
+        setConferences(conferenceData);
       } catch (error) {
         toast({
-          title: "Error fetching papers",
-          description: "Could not retrieve the list of approved papers.",
+          title: "Error fetching data",
+          description: "Could not retrieve the list of approved papers and conferences.",
           variant: "destructive",
         });
       } finally {
         setIsLoading(false);
       }
     };
-    fetchApprovedPapers();
+    fetchData();
   }, [toast]);
+  
+  const getTargetName = (submission: Submission) => {
+    if (submission.submissionType === 'conference') {
+        const conference = conferences.find(c => c.id === submission.targetId);
+        return conference ? conference.shortTitle : submission.targetId.substring(0, 6) + '...';
+    }
+    // Assuming Journal name is already meaningful or handled elsewhere if needed
+    return submission.targetId;
+  }
 
   return (
     <Card>
@@ -49,7 +64,7 @@ export default function ApprovedPapersTable() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>ID</TableHead>
+              <TableHead>Conference/Journal</TableHead>
               <TableHead>Title</TableHead>
               <TableHead>Author</TableHead>
               <TableHead>Completion Date</TableHead>
@@ -68,7 +83,7 @@ export default function ApprovedPapersTable() {
             ) : (
               approvedPapers.map((paper) => (
                 <TableRow key={paper.id}>
-                  <TableCell className="font-mono text-xs">{paper.id.substring(0, 6)}...</TableCell>
+                  <TableCell className="font-mono text-xs">{getTargetName(paper)}</TableCell>
                   <TableCell className="font-medium">{paper.title}</TableCell>
                   <TableCell>{paper.fullName}</TableCell>
                   <TableCell>{new Date(paper.submittedAt).toLocaleDateString()}</TableCell>
@@ -84,3 +99,4 @@ export default function ApprovedPapersTable() {
     </Card>
   );
 }
+
