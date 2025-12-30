@@ -462,8 +462,6 @@ function ConferenceDetailClient({ slug }: { slug: string }) {
 }
 
 export default function ConferenceDetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-
   const LoadingSkeleton = () => (
     <div className="container py-12 md:py-24">
       <div className="space-y-4">
@@ -488,7 +486,7 @@ export default function ConferenceDetailPage({ params }: { params: { slug: strin
 
   return (
     <Suspense fallback={<LoadingSkeleton />}>
-      <ConferenceDetailClient slug={slug} />
+      <ConferenceDetailClient slug={params.slug} />
     </Suspense>
   );
 }
