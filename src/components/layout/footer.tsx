@@ -22,7 +22,7 @@ const exploreLinks = [
 
 const socialLinks = [
     { href: "https://www.linkedin.com/company/pure-researcher-insights/", icon: Linkedin },
-    { href: "https://www.youtube.com/@PureResearchInsights", icon: Youtube },
+    // { href: "https://www.youtube.com/@PureResearchInsights", icon: Youtube },
     { href: "2) https://www.facebook.com/profile.php?id=61580467397343", icon: Facebook },
     { href: "https://www.instagram.com/pure_research_insights?igsh=ZjdqZXN5NHRtemhn", icon: Instagram },
 ]
@@ -46,7 +46,7 @@ const Footer = () => {
                             </p>
                             <p className="flex items-start gap-2">
                                 <Phone className="h-4 w-4 mt-0.5 text-[#D32F2F] flex-shrink-0" />
-                                <span>+91-7020095748</span>
+                                <span>+91-7020095748 | 9960266198</span>
                             </p>
                             <p className="flex items-start gap-2">
                                 <Mail className="h-4 w-4 mt-0.5 text-[#D32F2F] flex-shrink-0" />
