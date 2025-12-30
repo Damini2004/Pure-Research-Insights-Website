@@ -100,7 +100,7 @@ export default function PastConferencesPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-0 pt-4 flex-grow">
-                  <p className="text-muted-foreground line-clamp-3">
+                  <p className="text-muted-foreground text-sm">
                     {conference.description}
                   </p>
                 </CardContent>
