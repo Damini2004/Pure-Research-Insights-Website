@@ -106,7 +106,7 @@ export default function PastConferencesPage() {
                 </CardContent>
                 <CardFooter className="p-0 pt-6">
                   <Button asChild>
-                    <Link href={`/conference/${conference.id}`}>
+                    <Link href={`/conference/${conference.shortTitle}`}>
                       Read More <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

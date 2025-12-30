@@ -3,7 +3,7 @@
 'use server';
 
 import { db } from '@/lib/firebase';
-import { collection, addDoc, getDocs, DocumentData, QueryDocumentSnapshot, deleteDoc, doc, orderBy, query, serverTimestamp, getDoc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, DocumentData, QueryDocumentSnapshot, deleteDoc, doc, orderBy, query, serverTimestamp, getDoc, updateDoc, where, limit } from 'firebase/firestore';
 import { format } from 'date-fns';
 import { type AddConferenceData, type Conference, conferenceSchema } from '@/lib/types';
 import { z } from 'zod';
@@ -177,6 +177,31 @@ export async function getConferenceById(id: string): Promise<{ success: boolean;
         return { success: false, message: `Failed to fetch conference: ${message}` };
     }
 }
+
+export async function getConferenceByShortTitle(shortTitle: string): Promise<{ success: boolean; message: string; conference?: Conference }> {
+    try {
+        if (!shortTitle) {
+            return { success: false, message: 'Conference slug (short title) is required.' };
+        }
+        const q = query(collection(db, 'conferences'), where('shortTitle', '==', shortTitle), limit(1));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            return { success: false, message: 'Conference not found.' };
+        }
+        
+        const conferenceDoc = querySnapshot.docs[0];
+        const conference = mapDocToConference(conferenceDoc);
+
+        return { success: true, message: 'Conference fetched successfully.', conference };
+
+    } catch (error) {
+        console.error("Error fetching conference by short title:", error);
+        const message = error instanceof Error ? error.message : 'An unexpected error occurred.';
+        return { success: false, message: `Failed to fetch conference: ${message}` };
+    }
+}
+
 
 export async function updateConference(id: string, data: Partial<AddConferenceData> & { imageSrc?: string, paperTemplateUrl?: string }): Promise<{ success: boolean; message: string }> {
     try {

@@ -47,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Dynamic conference pages
   const conferences = await getConferences();
   const conferenceRoutes = conferences.map((conference) => ({
-    url: `${BASE_URL}/conference/${conference.id}`,
+    url: `${BASE_URL}/conference/${conference.shortTitle}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'weekly' as 'weekly',
     priority: 0.7,
